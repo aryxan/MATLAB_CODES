@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATLAB Codes Portal</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  /* Login Page Styles */
+  #login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #e9ecef;
+  }
+  .login-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+  }
+  .login-box h2 {
+    margin-bottom: 25px;
+    color: #333;
+  }
+  .login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background 0.3s;
+  }
+  .login-box button:hover {
+    background: #0056b3;
+  }
+  .error-msg {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 15px;
+    display: none;
+  }
+
+  /* Content Page Styles */
+  #content-page {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    color: #333;
+  }
+  .logout-btn {
+    padding: 10px 20px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .logout-btn:hover {
+    background: #c82333;
+  }
+  
+  .section-title {
+    background: #343a40;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 40px;
+  }
+
+  .code-section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 35px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .code-section h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
+  .question-text {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: #444;
+    line-height: 1.5;
+  }
+  pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 0;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.3s;
+  }
+  .copy-btn:hover {
+    background: #218838;
+  }
+</style>
+</head>
+<body>
+
+<!-- Login Page -->
+<div id="login-page">
+  <div class="login-box">
+    <h2>MATLAB Codes Access</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error-msg" id="error-msg">Invalid credentials! Hint: admin / password</p>
+  </div>
+</div>
+
+<!-- Content Page -->
+<div id="content-page" class="container">
+  <div class="header">
+    <h1>MATLAB Practice Codes</h1>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- ==============================================
+       PDF 1: Fixed Point Iteration Method & Lagrange Interpolation
+       ============================================== -->
+  <h2 class="section-title">PDF 1: Fixed Point Iteration & Lagrange Interpolation</h2>
+  
+  <div class="code-section">
+    <h3>Fixed Point Iteration - Question 1</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use the Fixed Point Iteration Method to solve <em>x = cos(x)</em>. Take the initial approximation x0 = 0.5, tolerance 10<sup>-4</sup>, and maximum 100 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+g = @(x) cos(x);
+
+x0 = 0.5;
+tol = 1e-4;
+n = 100;
+
+disp('Fixed Point Iteration Method');
+disp('Iteration x');
+
+for i = 1:n
+    x1 = g(x0);
+    disp([i, x1]);
+
+    if abs(x1 - x0) < tol
+        disp('Root = ');
+        disp(x1);
+        disp('Number of iterations = ');
+        disp(i);
+        break;
+    end
+    x0 = x1;
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Fixed Point Iteration - Question 2</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use the Fixed Point Iteration Method to solve <em>x = sqrt(2 + x)</em>. Take x0 = 1, tolerance 10<sup>-4</sup>, and maximum 100 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+g = @(x) sqrt(2 + x);
+
+x0 = 1;
+tol = 1e-4;
+n = 100;
+
+disp('Fixed Point Iteration Method');
+disp('Iteration x');
+
+for i = 1:n
+    x1 = g(x0);
+    disp([i, x1]);
+
+    if abs(x1 - x0) < tol
+        disp('Root = ');
+        disp(x1);
+        disp('Number of iterations = ');
+        disp(i);
+        break;
+    end
+    x0 = x1;
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Fixed Point Iteration - Question 3</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use the Fixed Point Iteration Method to solve <em>x = sqrt(3x + 4)</em>. Take x0 = 4, tolerance 10<sup>-4</sup>, and maximum 100 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+g = @(x) sqrt(3*x + 4);
+
+x0 = 4;
+tol = 1e-4;
+n = 100;
+
+disp('Fixed Point Iteration Method');
+disp('Iteration x');
+
+for i = 1:n
+    x1 = g(x0);
+    disp([i, x1]);
+
+    if abs(x1 - x0) < tol
+        disp('Root = ');
+        disp(x1);
+        disp('Number of iterations = ');
+        disp(i);
+        break;
+    end
+    x0 = x1;
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Fixed Point Iteration - Question 4</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use the Fixed Point Iteration Method to solve <em>x = (1/2) * (x + 3/x)</em>. Take x0 = 2, tolerance 10<sup>-4</sup>, and maximum 100 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+g = @(x) 0.5*(x + 3/x);
+
+x0 = 2;
+tol = 1e-4;
+n = 100;
+
+disp('Fixed Point Iteration Method');
+disp('Iteration x');
+
+for i = 1:n
+    x1 = g(x0);
+    disp([i, x1]);
+
+    if abs(x1 - x0) < tol
+        disp('Root = ');
+        disp(x1);
+        disp('Number of iterations = ');
+        disp(i);
+        break;
+    end
+    x0 = x1;
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Fixed Point Iteration - Question 5</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use the Fixed Point Iteration Method to solve <em>x = e<sup>-x</sup></em>. Take x0 = 0.5, tolerance 10<sup>-4</sup>, and maximum 100 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+g = @(x) exp(-x);
+
+x0 = 0.5;
+tol = 1e-4;
+n = 100;
+
+disp('Fixed Point Iteration Method');
+disp('Iteration x');
+
+for i = 1:n
+    x1 = g(x0);
+    disp([i, x1]);
+
+    if abs(x1 - x0) < tol
+        disp('Root = ');
+        disp(x1);
+        disp('Number of iterations = ');
+        disp(i);
+        break;
+    end
+    x0 = x1;
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Lagrange Interpolation - Question 1</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Lagrange Interpolation, find the value of y at X = 2.5 from the data: 
+      <br>x: [1, 2, 3] <br>y: [1, 4, 9]<br>Write a MATLAB program in which the user enters the values of x, y, and X.
+    </div>
+    <pre><code>clc;
+clear;
+
+n = input('Enter the value of n: ');
+x = input('Enter x values: ');
+y = input('Enter y values: ');
+X = input('Enter the value of X: ');
+
+P = 0;
+
+for i = 1:n+1
+    L = 1;
+    for j = 1:n+1
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+
+disp('Interpolated value = ');
+disp(P);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Lagrange Interpolation - Question 2</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Lagrange Interpolation, find the value of y at X = 4 from the data: 
+      <br>x: [1, 2, 3, 5] <br>y: [2, 4, 8, 32]<br>Use MATLAB and take the values from the user.
+    </div>
+    <pre><code>clc;
+clear;
+
+n = input('Enter the value of n: ');
+x = input('Enter x values: ');
+y = input('Enter y values: ');
+X = input('Enter the value of X: ');
+
+P = 0;
+
+for i = 1:n+1
+    L = 1;
+    for j = 1:n+1
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+
+disp('Interpolated value = ');
+disp(P);</code></pre>
+  </div>
+  
+  <div class="code-section">
+    <h3>Lagrange Interpolation - Question 3</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Lagrange's Interpolation Formula to estimate the value of y at X = 2.5 from: 
+      <br>x: [1, 2, 3, 4] <br>y: [1, 8, 27, 64]<br>Write the MATLAB program using disp to display the answer.
+    </div>
+    <pre><code>clc;
+clear;
+
+n = input('Enter the value of n: ');
+x = input('Enter x values: ');
+y = input('Enter y values: ');
+X = input('Enter the value of X: ');
+
+P = 0;
+
+for i = 1:n+1
+    L = 1;
+    for j = 1:n+1
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+
+disp('Interpolated value = ');
+disp(P);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Lagrange Interpolation - Question 4</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Lagrange Interpolation, find y at X = 2.5 for:
+      <br>x: [0, 1, 2, 3, 4] <br>y: [0, 1, 4, 9, 16]<br>Do not ask the user to enter any values. Define all values directly in the MATLAB program.
+    </div>
+    <pre><code>clc;
+clear;
+
+n = 4;
+x = [0 1 2 3 4];
+y = [0 1 4 9 16];
+X = 2.5;
+
+P = 0;
+
+for i = 1:n+1
+    L = 1;
+    for j = 1:n+1
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+
+disp('Interpolated value = ');
+disp(P);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Lagrange Interpolation - Question 5</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Lagrange Interpolation, estimate y at X = 3.5 from:
+      <br>x: [1, 2, 3, 4, 5] <br>y: [1, 4, 9, 16, 25]<br>Take all values directly inside the MATLAB program. Do not use the input function.
+    </div>
+    <pre><code>clc;
+clear;
+
+n = 4;
+x = [1 2 3 4 5];
+y = [1 4 9 16 25];
+X = 3.5;
+
+P = 0;
+
+for i = 1:n+1
+    L = 1;
+    for j = 1:n+1
+        if j ~= i
+            L = L * (X - x(j)) / (x(i) - x(j));
+        end
+    end
+    P = P + y(i) * L;
+end
+
+disp('Interpolated value = ');
+disp(P);</code></pre>
+  </div>
+
+
+  <!-- ==============================================
+       PDF 2: IVT & Bisection Method
+       ============================================== -->
+  <h2 class="section-title">PDF 2: IVT & Bisection Method</h2>
+
+  <div class="code-section">
+    <h3>IVT - Question 1</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Find the interval containing a root of <em>f(x) = x<sup>2</sup> - 4</em> for x in [0, 3].
+    </div>
+    <pre><code>clc;
+clear;
+
+f = @(x) x^2 - 4;
+a = 0;
+b = 3;
+
+if f(a)*f(b) < 0
+    disp('Root is present between a and b');
+    disp([a b]);
+else
+    disp('Root is not present');
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>IVT - Question 2</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Find the interval containing a root of <em>f(x) = x<sup>3</sup> - x - 2</em> for x in [1, 2].
+    </div>
+    <pre><code>clc;
+clear;
+
+f = @(x) x^3 - x - 2;
+a = 1;
+b = 2;
+
+if f(a)*f(b) < 0
+    disp('Root is present between:');
+    disp([a b]);
+else
+    disp('Root is not present');
+end</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Bisection Method - Question 3</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Find the root of <em>f(x) = x<sup>2</sup> - 4</em> using the Bisection Method in the interval [0, 3].
+    </div>
+    <pre><code>clc;
+clear;
+
+f = @(x) x^2 - 4;
+a = 0;
+b = 3;
+
+for i = 1:10
+    c = (a+b)/2;
+    if f(a)*f(c) < 0
+        b = c;
+    else
+        a = c;
+    end
+end
+
+disp('Root is:');
+disp(c);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Bisection Method - Question 4</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Find the root of <em>f(x) = x<sup>3</sup> - x - 2</em> using the Bisection Method in [1, 2].
+    </div>
+    <pre><code>clc;
+clear;
+
+f = @(x) x^3 - x - 2;
+a = 1;
+b = 2;
+
+for i = 1:10
+    c = (a+b)/2;
+    if f(a)*f(c) < 0
+        b = c;
+    else
+        a = c;
+    end
+end
+
+disp('Root is:');
+disp(c);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Bisection Method - Question 5</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Find the root of <em>f(x) = x<sup>2</sup> - 5</em> using the Bisection Method in [2, 3].
+    </div>
+    <pre><code>clc;
+clear;
+
+f = @(x) x^2 - 5;
+a = 2;
+b = 3;
+
+for i = 1:10
+    c = (a+b)/2;
+    if f(a)*f(c) < 0
+        b = c;
+    else
+        a = c;
+    end
+end
+
+disp('Root is:');
+disp(c);</code></pre>
+  </div>
+
+
+  <!-- ==============================================
+       PDF 3: Newton's Method
+       ============================================== -->
+  <h2 class="section-title">PDF 3: Newton's Method</h2>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 1 (One Equation)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve <em>f(x) = x<sup>2</sup> - 2 = 0</em>. Take the initial approximation x0 = 1 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 1;
+
+for i = 1:5
+    f = x^2 - 2;
+    df = 2*x;
+    x = x - f/df;
+end
+
+disp('Root x = ');
+disp(x);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 2 (One Equation)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve <em>f(x) = x<sup>2</sup> - 9 = 0</em>. Take x0 = 4 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 4;
+
+for i = 1:5
+    f = x^2 - 9;
+    df = 2*x;
+    x = x - f/df;
+end
+
+disp('Root x = ');
+disp(x);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 3 (One Equation)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve <em>f(x) = x<sup>3</sup> - 8 = 0</em>. Take x0 = 3 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 3;
+
+for i = 1:5
+    f = x^3 - 8;
+    df = 3*x^2;
+    x = x - f/df;
+end
+
+disp('Root x = ');
+disp(x);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 4 (One Equation)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve <em>f(x) = x<sup>3</sup> - x - 2 = 0</em>. Take x0 = 1.5 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 1.5;
+
+for i = 1:5
+    f = x^3 - x - 2;
+    df = 3*x^2 - 1;
+    x = x - f/df;
+end
+
+disp('Root x = ');
+disp(x);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 5 (Two Equations)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve the system:
+      <br><em>x<sup>2</sup> + y<sup>2</sup> - 4 = 0</em>
+      <br><em>x - y = 0</em>
+      <br>Take x0 = 1, y0 = 1 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 1;
+y = 1;
+
+for i = 1:5
+    f1 = x^2 + y^2 - 4;
+    f2 = x - y;
+    
+    J = [2*x 2*y;
+         1   -1];
+    
+    F = [f1; f2];
+    d = -(J\F);
+    
+    x = x + d(1);
+    y = y + d(2);
+end
+
+disp('x = ');
+disp(x);
+
+disp('y = ');
+disp(y);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 6 (Two Equations)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve the system:
+      <br><em>x<sup>2</sup> + y<sup>2</sup> - 5 = 0</em>
+      <br><em>x - y - 1 = 0</em>
+      <br>Take x0 = 1.5, y0 = 0.8 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 1.5;
+y = 0.8;
+
+for i = 1:5
+    f1 = x^2 + y^2 - 5;
+    f2 = x - y - 1;
+    
+    J = [2*x 2*y;
+         1   -1];
+    
+    F = [f1; f2];
+    d = -(J\F);
+    
+    x = x + d(1);
+    y = y + d(2);
+end
+
+disp('x = ');
+disp(x);
+
+disp('y = ');
+disp(y);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 7 (Two Equations)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve the system:
+      <br><em>x<sup>2</sup> + y - 3 = 0</em>
+      <br><em>x + y<sup>2</sup> - 3 = 0</em>
+      <br>Take x0 = 1, y0 = 1 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 1;
+y = 1;
+
+for i = 1:5
+    f1 = x^2 + y - 3;
+    f2 = x + y^2 - 3;
+    
+    J = [2*x 1;
+         1   2*y];
+    
+    F = [f1; f2];
+    d = -(J\F);
+    
+    x = x + d(1);
+    y = y + d(2);
+end
+
+disp('x = ');
+disp(x);
+
+disp('y = ');
+disp(y);</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Newton's Method - Question 8 (Two Equations)</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Use Newton's method to solve the system:
+      <br><em>x<sup>2</sup> + y<sup>2</sup> - 10 = 0</em>
+      <br><em>x + y - 4 = 0</em>
+      <br>Take x0 = 2.8, y0 = 1.2 and perform 5 iterations.
+    </div>
+    <pre><code>clc;
+clear;
+
+x = 2.8;
+y = 1.2;
+
+for i = 1:5
+    f1 = x^2 + y^2 - 10;
+    f2 = x + y - 4;
+    
+    J = [2*x 2*y;
+         1   1];
+    
+    F = [f1; f2];
+    d = -(J\F);
+    
+    x = x + d(1);
+    y = y + d(2);
+end
+
+disp('x = ');
+disp(x);
+
+disp('y = ');
+disp(y);</code></pre>
+  </div>
+
+</div>
+
+<script>
+  function login() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    
+    if (user === 'admin' && pass === 'password') {
+      document.getElementById('login-page').style.display = 'none';
+      document.getElementById('content-page').style.display = 'block';
+    } else {
+      document.getElementById('error-msg').style.display = 'block';
+    }
+  }
+
+  function logout() {
+    document.getElementById('login-page').style.display = 'flex';
+    document.getElementById('content-page').style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('error-msg').style.display = 'none';
+  }
+
+  function copyCode(btn) {
+    const codeBlock = btn.parentElement.querySelector('code').innerText;
+    navigator.clipboard.writeText(codeBlock).then(() => {
+      const originalText = btn.innerText;
+      btn.innerText = 'Copied!';
+      setTimeout(() => {
+        btn.innerText = originalText;
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+
+  // Allow pressing Enter to login
+  document.getElementById('password').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      login();
+    }
+  });
+</script>
+
+</body>
+</html>
