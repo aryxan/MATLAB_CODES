@@ -6,6 +6,7 @@
 <title>MATLAB Codes Portal</title>
 <link rel="icon" href="favicon.png" type="image/png">
 <style>
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
@@ -174,10 +175,23 @@
     <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
+  <div class="toc" style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <h2 style="margin-top: 0; color: #333;">Table of Contents</h2>
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li style="margin-bottom: 10px;"><a href="#fixed-point" style="text-decoration: none; color: #007bff; font-weight: bold;">1. Fixed Point Iteration</a></li>
+      <li style="margin-bottom: 10px;"><a href="#lagrange" style="text-decoration: none; color: #007bff; font-weight: bold;">2. Lagrange Interpolation</a></li>
+      <li style="margin-bottom: 10px;"><a href="#ivt" style="text-decoration: none; color: #007bff; font-weight: bold;">3. Intermediate Value Theorem (IVT)</a></li>
+      <li style="margin-bottom: 10px;"><a href="#bisection" style="text-decoration: none; color: #007bff; font-weight: bold;">4. Bisection Method</a></li>
+      <li style="margin-bottom: 10px;"><a href="#newtons-one-eq" style="text-decoration: none; color: #007bff; font-weight: bold;">5. Newton's Method (One Equation)</a></li>
+      <li style="margin-bottom: 10px;"><a href="#newtons-two-eq" style="text-decoration: none; color: #007bff; font-weight: bold;">6. Newton's Method (Two Equations)</a></li>
+      <li style="margin-bottom: 10px;"><a href="#divided-diff" style="text-decoration: none; color: #007bff; font-weight: bold;">7. Newton's Divided Difference Interpolation</a></li>
+    </ul>
+  </div>
+
   <!-- ==============================================
        PDF 1: Fixed Point Iteration Method & Lagrange Interpolation
        ============================================== -->
-  <h2 class="section-title">PDF 1: Fixed Point Iteration & Lagrange Interpolation</h2>
+  <h2 class="section-title" id="fixed-point">PDF 1: Fixed Point Iteration & Lagrange Interpolation</h2>
   
   <div class="code-section">
     <h3>Fixed Point Iteration - Question 1</h3>
@@ -345,7 +359,7 @@ end</code></pre>
   </div>
 
   <div class="code-section">
-    <h3>Lagrange Interpolation - Question 1</h3>
+    <h3 id="lagrange">Lagrange Interpolation - Question 1</h3>
     <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
     <div class="question-text">
       <strong>Question:</strong> Using Lagrange Interpolation, find the value of y at X = 2.5 from the data: 
@@ -503,10 +517,10 @@ disp(P);</code></pre>
   <!-- ==============================================
        PDF 2: IVT & Bisection Method
        ============================================== -->
-  <h2 class="section-title">PDF 2: IVT & Bisection Method</h2>
+  <h2 class="section-title" id="ivt-bisection">PDF 2: IVT & Bisection Method</h2>
 
   <div class="code-section">
-    <h3>IVT - Question 1</h3>
+    <h3 id="ivt">IVT - Question 1</h3>
     <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
     <div class="question-text">
       <strong>Question:</strong> Find the interval containing a root of <em>f(x) = x<sup>2</sup> - 4</em> for x in [0, 3].
@@ -548,7 +562,7 @@ end</code></pre>
   </div>
 
   <div class="code-section">
-    <h3>Bisection Method - Question 3</h3>
+    <h3 id="bisection">Bisection Method - Question 3</h3>
     <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
     <div class="question-text">
       <strong>Question:</strong> Find the root of <em>f(x) = x<sup>2</sup> - 4</em> using the Bisection Method in the interval [0, 3].
@@ -629,10 +643,10 @@ disp(c);</code></pre>
   <!-- ==============================================
        PDF 3: Newton's Method
        ============================================== -->
-  <h2 class="section-title">PDF 3: Newton's Method</h2>
+  <h2 class="section-title" id="newtons-method">PDF 3: Newton's Method</h2>
 
   <div class="code-section">
-    <h3>Newton's Method - Question 1 (One Equation)</h3>
+    <h3 id="newtons-one-eq">Newton's Method - Question 1 (One Equation)</h3>
     <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
     <div class="question-text">
       <strong>Question:</strong> Use Newton's method to solve <em>f(x) = x<sup>2</sup> - 2 = 0</em>. Take the initial approximation x0 = 1 and perform 5 iterations.
@@ -716,7 +730,7 @@ disp(x);</code></pre>
   </div>
 
   <div class="code-section">
-    <h3>Newton's Method - Question 5 (Two Equations)</h3>
+    <h3 id="newtons-two-eq">Newton's Method - Question 5 (Two Equations)</h3>
     <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
     <div class="question-text">
       <strong>Question:</strong> Use Newton's method to solve the system:
@@ -859,6 +873,173 @@ disp('y = ');
 disp(y);</code></pre>
   </div>
 
+
+  <!-- ==============================================
+       PDF 4: Newton's Divided Difference Interpolation
+       ============================================== -->
+  <h2 class="section-title" id="divided-diff">PDF 4: Newton's Divided Difference Interpolation</h2>
+
+  <div class="code-section">
+    <h3>Question 1</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Newton's divided difference interpolation, find the value of f(2.5) for:<br>x = [1, 2, 3], y = [1, 4, 9]
+    </div>
+    <pre><code>clc;
+clear;
+x = [1 2 3];
+y = [1 4 9];
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+xp = 2.5;
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+disp(ans1)</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Question 2</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Newton's divided difference interpolation, find the value of f(1.5) for:<br>x = [0, 1, 2], y = [1, 2, 5]
+    </div>
+    <pre><code>clc;
+clear;
+x = [0 1 2];
+y = [1 2 5];
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+xp = 1.5;
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+disp(ans1)</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Question 3</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Newton's divided difference interpolation, find the value of f(2.5) for:<br>x = [1, 2, 3, 4], y = [2, 5, 10, 17]
+    </div>
+    <pre><code>clc;
+clear;
+x = [1 2 3 4];
+y = [2 5 10 17];
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+xp = 2.5;
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+disp(ans1)</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Question 4</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Newton's divided difference interpolation, find the value of f(3) for:<br>x = [1, 2, 4, 5], y = [1, 4, 16, 25]
+    </div>
+    <pre><code>clc;
+clear;
+x = [1 2 4 5];
+y = [1 4 16 25];
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+xp = 3;
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+disp(ans1)</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>Question 5</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Question:</strong> Using Newton's divided difference interpolation, find the value of f(2.5) for:<br>x = [0, 1, 2, 3], y = [1, 3, 7, 13]
+    </div>
+    <pre><code>clc;
+clear;
+x = [0 1 2 3];
+y = [1 3 7 13];
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+xp = 2.5;
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+disp(ans1)</code></pre>
+  </div>
+
+  <div class="code-section">
+    <h3>General Code Template</h3>
+    <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+    <div class="question-text">
+      <strong>Info:</strong> Very Easy Way to Remember the Program. Change x, y, and xp values as needed.
+    </div>
+    <pre><code>clc;
+clear;
+x = [1 2 3]; % change these values
+y = [1 4 9]; % change these values
+xp = 2.5; % required x value
+n = length(x);
+D(:,1) = y';
+for j = 2:n
+    for i = 1:n-j+1
+        D(i,j) = (D(i+1,j-1)-D(i,j-1))/(x(i+j-1)-x(i));
+    end
+end
+ans1 = D(1,1);
+p = 1;
+for j = 2:n
+    p = p*(xp-x(j-1));
+    ans1 = ans1 + D(1,j)*p;
+end
+fprintf('Interpolated value = %.4f\n',ans1);</code></pre>
+  </div>
 </div>
 
 <script>
