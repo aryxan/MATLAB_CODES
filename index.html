@@ -164,7 +164,7 @@
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
-    <p class="error-msg" id="error-msg">Invalid credentials! Hint: admin / password</p>
+    <p class="error-msg" id="error-msg">Invalid credentials! Hint: 123 / 123</p>
   </div>
 </div>
 
@@ -1047,7 +1047,7 @@ fprintf('Interpolated value = %.4f\n',ans1);</code></pre>
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
     
-    if (user === 'admin' && pass === 'password') {
+    if (user === '123' && pass === '123') {
       document.getElementById('login-page').style.display = 'none';
       document.getElementById('content-page').style.display = 'block';
     } else {
